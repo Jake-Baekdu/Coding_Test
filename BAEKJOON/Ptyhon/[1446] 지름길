@@ -1,0 +1,51 @@
+import heapq
+
+N, D = map(int, input().split())
+short = dict()
+
+for i in range(N):
+    s, e, w = map(int, input().split())
+    if e > D:
+        continue
+    try:
+        short[s].append((w, e))
+    except KeyError:
+        short[s] = [(w, e)]
+
+dist = [float("INF") for _ in range(D+1)]
+
+hq = []
+
+heapq.heappush(hq, (0,0)) #(weight, cur_location)
+dist[0] = 0
+
+while(hq):
+    w, cur_location = heapq.heappop(hq)
+    check_end_point = 0
+    check_weight = 0
+    
+    if cur_location == D:
+        print(w)
+        break
+    try:
+        for tw, te in short[cur_location]:
+            new_w = tw + w
+            if dist[te] > new_w:
+                check_end_point = te
+                check_weight = new_w
+                for i in range(cur_location, check_end_point+1):
+                    dist[i] = check_weight
+                heapq.heappush(hq, (new_w, te))
+    except KeyError:
+        pass
+    check_end_point = cur_location + 1
+    check_weight = w + 1
+    heapq.heappush(hq, (w+1, cur_location+1))
+    
+        
+        
+        
+        
+        
+        
+        
