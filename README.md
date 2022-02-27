@@ -1,6 +1,6 @@
 # Coding_Test
 
-Github에서 코드만 보실 분은 보시고 혹시 정리된 문제나 풀이보고 싶으시면 
+자세한 내용은 아래 블로그 참조
 
 ## 🚀http://bitly.kr/GoAxqov2jv
 ## 🚀https://jeongtai.tistory.com/  (티스토리로 블로그 이동했어요)
