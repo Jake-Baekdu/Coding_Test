@@ -1,8 +1,7 @@
 import sys
-from collections import deque
 # input = "sys.stdin.readline"
 
-a = int(input())
+a = input()
 b = int(input())
 
 tmp = int(a[:-2] + '00')
