@@ -1,0 +1,3 @@
+idInput = input()
+
+print(idInput + "??!")
