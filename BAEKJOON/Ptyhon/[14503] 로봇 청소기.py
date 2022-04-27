@@ -1,29 +1,32 @@
-n,m=map(int, input().split())
-r,c,d=map(int, input().split())
-dr=[-1, 0, 1, 0]
-dc=[0, 1, 0, -1]
-wall=[list(map(int, input().split())) for _ in range(n)]
-ans=1
-wall[r][c]=2
+n, m = map(int, input().split())
+x, y, D = map(int, input().split())
+
+board = [list(map(int, input().split())) for _ in range(n)]
+move_direction = [(-1,0), (0,1), (1,0), (0,-1)] #북, 동, 남, 서
+
+ans = 1
+board[x][y] = 2
 while True:
-    turn=0
-    while turn < 4:
-        d=(d+3)%4
-        nr = r + dr[d]
-        nc = c + dc[d]
-        if wall[nr][nc] == 0:
-            r=nr
-            c=nc
-            wall[r][c]=2
-            ans+=1
+    cnt = 0
+    while cnt < 4:
+        D = (D+3)%4
+        tx = x + move_direction[D][0]
+        ty = y + move_direction[D][1]
+        
+        if board[tx][ty] == 0:
+            x = tx
+            y = ty
+            board[x][y] = 2
+            ans += 1
             break
-        turn+=1
-    if turn == 4:
-        nr=r+dr[(d+2)%4]
-        nc=c+dc[(d+2)%4]
-        if wall[nr][nc] == 1:
+        cnt += 1
+       
+    if cnt == 4 :
+        tx = x + move_direction[(D+2)%4][0]
+        ty = y + move_direction[(D+2)%4][1]
+        if board[tx][ty] == 1:
             break
         else:
-            r=nr
-            c=nc
+            x = tx
+            y = ty
 print(ans)
